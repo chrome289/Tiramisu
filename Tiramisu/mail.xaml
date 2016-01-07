@@ -38,5 +38,6 @@
                 </Style>
             </DataGrid.Resources>
         </DataGrid>
+        <ProgressBar x:Name="pb1" Visibility="Hidden" Minimum="10" Margin="204,235,195,175" Value="10" LargeChange="0" Maximum="1" IsIndeterminate="True"/>
     </Grid>
 </UserControl>
