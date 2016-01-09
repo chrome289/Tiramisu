@@ -8,10 +8,17 @@
              d:DesignHeight="550" d:DesignWidth="750" Background="White">
     <Grid>
         <StackPanel Orientation="Horizontal" Margin="0,-25,33,0" VerticalAlignment="Top">
-            <Label x:Name="label" Content="INBOX" HorizontalAlignment="Left" Margin="0,20,0,0" VerticalAlignment="Top" Height="34" Width="132" FontSize="18.667" FontWeight="Bold" HorizontalContentAlignment="Center"/>
+            <ComboBox x:Name="folder" SelectedIndex="0" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="0,20,0,0" VerticalAlignment="Top" Height="34" Width="132" FontSize="16" HorizontalContentAlignment="Center" SelectionChanged="folder_SelectionChanged">
+                <ComboBoxItem Content="All Mail"/>
+                <ComboBoxItem Content="Sent Mail"/>
+                <ComboBoxItem Content="Drafts"/>
+                <ComboBoxItem Content="Spam"/>
+                <ComboBoxItem Content="Trash"/>
+                
+            </ComboBox>
             <Button x:Name="bt1" Content="Refresh" FontSize="14" FontFamily="Tahoma" BorderThickness="1" Click="bt1_Click" VerticalAlignment="Top" Height="32" Width="132" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="#FFCCCCCC" Margin="380,20,0,0"/>
         </StackPanel>
-        <DataGrid HeadersVisibility="Column" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Background="White" ItemsSource="{Binding}" Name="dataGrid" AutoGenerateColumns="False" AllowDrop="True" IsReadOnly="True" IsManipulationEnabled="True" GridLinesVisibility="Horizontal" RowHeight="30" CanUserResizeRows="False" Margin="0,42,33,15" >
+        <DataGrid HeadersVisibility="Column" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Background="White" ItemsSource="{Binding}" Name="dataGrid" AutoGenerateColumns="False" AllowDrop="True" IsReadOnly="True" IsManipulationEnabled="True" GridLinesVisibility="Horizontal" RowHeight="40" CanUserResizeRows="False" Margin="0,42,33,15" >
 
             <DataGrid.ColumnHeaderStyle>
                 <Style TargetType="{x:Type DataGridColumnHeader}">
@@ -27,10 +34,11 @@
                 <DropShadowEffect BlurRadius="20" Color="#FFC1BCBC" Direction="300" RenderingBias="Quality" ShadowDepth="3"/>
             </DataGrid.Effect>
             <DataGrid.Columns>
-                <DataGridTextColumn Header="S. No."  Width="50" CanUserResize="True" Binding="{Binding Col1}"/>
-                <DataGridTextColumn Header="Date" Width="130" Binding="{Binding Col2}"/>
-                <DataGridTextColumn Header="Sender" Width="130" Binding="{Binding Col3}"/>
-                <DataGridTextColumn Header="Subject" CanUserResize="True" Width="450" Binding="{Binding Col4}"/>
+                <DataGridTextColumn Header="S. No."  Width="50" CanUserResize="True" Binding="{Binding Col1}" SortDirection="Descending"/>
+                <DataGridTextColumn Header="Date" Width="150" Binding="{Binding Col2}" SortDirection="Descending"/>
+                <DataGridTextColumn Header="Sender" Width="150" Binding="{Binding Col3}" SortDirection="Ascending"/>
+                <DataGridTextColumn Header="Subject" CanUserResize="True" Width="450" Binding="{Binding Col4}" SortDirection="Ascending"/>
+                <DataGridTextColumn Header="UID" CanUserResize="True" Width="50" Binding="{Binding Col5}"/>
             </DataGrid.Columns>
             <DataGrid.Resources>
                 <Style TargetType="DataGridRow">
